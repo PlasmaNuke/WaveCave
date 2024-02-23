@@ -1,13 +1,64 @@
 
-  .profile-dropdown * {
-    display: flex;
-    justify-content: center;
-  }
+.profile-dropdown * {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0 15px;
+}
 
-  .profile-dropdown a {
-    padding: 15px;
-    background: none;
-    font: inherit;
-    text-decoration: none;
-    color: white;
-  }
+.profile-dropdown a {
+  padding: 15px;
+  background: none;
+  font: inherit;
+  text-decoration: none;
+  color: lightgray;
+  font-size: x-small;
+}
+
+.profile-dropdown button {
+  appearance: none;
+  background: inherit;
+  border: none;
+  color: lightgray;
+  font-size: x-small;
+}
+
+.profile-dropdown button:hover {
+  color: white;
+}
+
+div.profile-dropdown-container {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+}
+
+ul.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 88px;
+  min-height: 140px;
+  z-index: 0;
+}
+
+ul.profile-dropdown li:nth-child() {
+  border-bottom: 1px solid black;
+
+}
+  
+div.profile-menu {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: flex-start;
+}
+
+div.profile-menu:has(ul) {
+  position: relative;
+  display: inline-block;
+}

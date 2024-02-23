@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import * as audioPlayerActions from '../../store/audioPlayer';
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import './AudioControls.css';
 
-export default function AudioControls({ handleNext }) {
+export default function AudioControls({ handleNext, handlePrev }) {
     const dispatch = useDispatch();
 
     const isPlaying = useSelector(state => state.audio.isPlaying);
 
-    const isShuffled = useSelector(state => state.audio.isShuffled);
-    const isRepeating = useSelector(state => state.audio.isRepeating);
+    const isShuffled = useSelector(state => state.audio.isShuffled, shallowEqual);
+    const isRepeating = useSelector(state => state.audio.isRepeating, shallowEqual);
     const [shuffleColor, setShuffleColor] = useState('Black');
     const [repeatColor, setRepeatColor] = useState('Black');
 
@@ -65,10 +65,7 @@ export default function AudioControls({ handleNext }) {
         <div className="audio-controls container">
             <div className="track-controls container">
                 <div className="previous button">
-                    <i className="fa fa-step-backward" onClick={(e) => { 
-                        e.preventDefault(); 
-                        dispatch(audioPlayerActions.playPrev()) 
-                    }}/>     
+                    <i className="fa fa-step-backward" onClick={handlePrev}/>     
                 </div>
                 <div className="play-pause button">
                 {isPlaying ? 

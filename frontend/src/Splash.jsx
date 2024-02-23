@@ -11,22 +11,24 @@ export default function Splash() {
     splashImage.onload = (e) => {
         e.preventDefault();
         const canvas = document.getElementById("splash-canvas");
-        const ctx = canvas.getContext("2d");
-        // ctx.scale(3.5, 3.5);
-        
-        ctx.drawImage(splashImage, 
-          20, 20,
-          splashImage.width - 20, splashImage.height - 20,
-          0, -250,
-          canvas.width, splashImage.height * (canvas.width / splashImage.width));
-          
-        ctx.fillStyle = "#f50"
-        ctx.fillRect(0, 0, canvas.width, 4);
-        
-        ctx.font = "48px Montserrat";
-        ctx.textAlign = "center"
-        ctx.fillStyle = "white"
-        ctx.fillText("Make the next big wave.", canvas.width / 2, canvas.height * 2/3);
+        if (canvas) {
+            const ctx = canvas.getContext("2d");
+            // ctx.scale(3.5, 3.5);
+            
+            ctx.drawImage(splashImage, 
+              20, 20,
+              splashImage.width - 20, splashImage.height - 20,
+              0, -250,
+              canvas.width, splashImage.height * (canvas.width / splashImage.width));
+              
+            ctx.fillStyle = "#f50"
+            ctx.fillRect(0, 0, canvas.width, 4);
+            
+            ctx.font = "48px Montserrat";
+            ctx.textAlign = "center"
+            ctx.fillStyle = "white"
+            ctx.fillText("Make the next big wave.", canvas.width / 2, canvas.height * 2/3);
+        }
     }
 
 

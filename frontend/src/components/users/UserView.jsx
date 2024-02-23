@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import * as userActions from '../../store/user'
 import { Outlet, useLoaderData } from "react-router-dom";
 import * as trackActions from '../../store/track'
@@ -8,7 +8,7 @@ import TrackIndexItem from "../tracks/TrackIndexItem";
 export default function UserView() {
     const user = useLoaderData();
     const dispatch = useDispatch();
-    const tracks = useSelector(state => state.tracks);
+    const tracks = useSelector(state => state.tracks, shallowEqual);
     const [trackIndexItems, setTrackIndexItems] = useState([]);
 
     const currentUser = useSelector(state => state.session.user);

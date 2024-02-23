@@ -50,7 +50,7 @@ const Navigation = () => {
             
             const tracks = data.tracks;
             dispatch(trackActions.receiveTracks(tracks));
-            dispatch(audioPlayerActions.loadTracks(Object.keys(tracks)));
+            dispatch(audioPlayerActions.loadTracksThunk(Object.keys(tracks)));
             dispatch(audioPlayerActions.playTrack())
         }
         catch (err) {
@@ -69,7 +69,7 @@ const Navigation = () => {
                     <span id="site-name" style={{'fontSize': 'xx-large', 'color': 'white'}}>WaveCave</span>
                 </li>
                 <li key='nav-link feed'>
-                    <NavLink to='/feed' className='nav-link feed'>Feed</NavLink>
+                    <NavLink to='/feed' className='nav-link feed' replace={true}>Feed</NavLink>
                 </li>
                 { 
                 sessionUser ?

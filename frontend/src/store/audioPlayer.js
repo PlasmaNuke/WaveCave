@@ -1,4 +1,5 @@
 import { tracks } from "../data/tracks";
+import * as trackActions from './track';
 
 export const PLAY_TRACK = 'audioPlayer/PLAY_TRACK';
 export const PAUSE_TRACK = 'audioPlayer/PAUSE_TRACK';
@@ -14,6 +15,8 @@ export const LOAD_TRACKS = 'audioPlayer/LOAD_TRACKS';
 export const LOAD_TRACK = 'audioPlayer/LOAD_TRACK';
 export const SET_VOLUME = 'audioPlayer/SET_VOLUME';
 export const UNLOAD_TRACKS = 'audioPlayer/UNLOAD_TRACKS';
+export const RECEIVE_TRACK = 'audioPlayer/RECEIVE_TRACK';
+export const RECEIVE_TRACKS = 'audioPlayer/RECEIVE_TRACKS';
 const UNLOAD_TRACK = 'audioPlayer/UNLOAD_TRACK'
 
 const initialState = { 
@@ -105,6 +108,30 @@ export const setRepeatFalse = () => {
     }
 }
 
+export const loadTrackThunk = trackId => async (dispatch, getState) => {
+    const state = getState();
+
+    if (!!state.tracks[trackId]) return /* state.tracks[trackId] */
+    dispatch(loadTrack(trackId))
+}
+
+export const loadTracksThunk = trackIds => async (dispatch, getState) => {
+    debugger
+    const state = getState();
+    let tracks = {}
+    for(const trackId of trackIds) { 
+        if (!!state.tracks[trackId]) {
+            tracks[trackId] = state.tracks[trackId]
+            if(!state.audio.queue.original[trackId]) dispatch(loadTrack(trackId))
+        }
+        else {
+            await dispatch(trackActions.loadTrack(trackId)); 
+            dispatch(loadTrack(trackId));
+        }
+    }
+    return tracks
+}
+
 const shuffle = (queue, currentTrackId = queue[0]) => {
     
     const indexOfId = queue.indexOf(currentTrackId);
@@ -175,8 +202,6 @@ export const audioPlayerReducer = (state = initialState, action) => {
             };
         case LOAD_TRACK:
             return {...state,
-                currentIndex: 0,
-                // isPlaying: true,
                 queue: {
                     original: [action.trackId],
                     shuffled: [action.trackId]

@@ -11,7 +11,7 @@ export default function TrackView() {
     const user = track.artist
     
     async function handleClick (e) {
-        const trackData = await dispatch(audioActions.loadTracks([track.id]))
+        const trackData = await dispatch(audioActions.loadTracksThunk([track.id]))
         dispatch(audioActions.playTrack());
     }
 

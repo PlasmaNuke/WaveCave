@@ -1,4 +1,7 @@
+
+
 div#navigation-bar li {
+    top: 0px;
     marker: none;
     display: flex;
     flex-direction: row;
@@ -12,18 +15,17 @@ div#navigation-bar li * {
     display: flex;
 }
 
-div#navigation-bar li:nth-child(-n + 4) {
+div#navigation-bar li:nth-child(n - 1) {
     border-right: 0;
 }
 
-
-div#navigation-bar li li {
+/* div#navigation-bar li li {
     display: flex;
-}
+} */
 
 div#navigation-bar ul {
     display: flex;
-    flex-direction: row;
+
     justify-content: center;
     background-color: rgb(35, 35, 35);
     height: 0%;
@@ -39,6 +41,7 @@ div#navigation-bar ul {
     appearance: none;
     font: inherit;
     color: lightgray;
+    background-color: inherit;
     border: 0;
     padding: 1rem 2rem;
 }
@@ -67,7 +70,7 @@ span#site-name {
     padding-right: 10px;
 }
 
-a.nav-link:hover {
+.nav-link:hover {
     color: white;
 }
 

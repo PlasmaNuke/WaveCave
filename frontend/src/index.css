@@ -3,7 +3,6 @@
 @import url(app.css);
 
 :root {
-    overflow: hidden;
     font-family: 'Monsterrat';
 }
 
@@ -11,48 +10,4 @@ p, span, label, h1, h2, h3, h4, h5, h6 {
     cursor: default;
 }
 
-button {
-    cursor: pointer;
-}
-
-@font-face {
-    font-family: 'WaveCave-Repeat-Icons-2';
-    src:  url('/fonts/WaveCave-Repeat-Icons-2.eot?vxbi38');
-    src:  url('/fonts/WaveCave-Repeat-Icons-2.eot?vxbi38#iefix') format('embedded-opentype'),
-      url('/fonts/WaveCave-Repeat-Icons-2.ttf?vxbi38') format('truetype'),
-      url('/fonts/WaveCave-Repeat-Icons-2.woff?vxbi38') format('woff'),
-      url('/fonts/WaveCave-Repeat-Icons-2.svg?vxbi38#WaveCave-Repeat-Icons-2') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-  }
-  
-  [class^="wc-icon-"], [class*=" wc-icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'WaveCave-Repeat-Icons-2' !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-  
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .wc-icon-cycle-1:before {
-    content: "\e901";
-  }
-  .wc-icon-cycle:before {
-    content: "\e900";
-  }
-  
-  button {
-    user-select: none;
-  }
-
-  .button {
-    user-select: none;
-  }
 

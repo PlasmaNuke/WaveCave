@@ -4,10 +4,8 @@ class Api::SessionsController < ApplicationController
             @user = current_user
             render '/api/users/show'
         else
-            render json: { errors: {
-                user: ['No user currently logged in']
-            }},
-                status: :not_found
+            render json: { message: ['No user currently logged in']
+            }
         end
     end
 

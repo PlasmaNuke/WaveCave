@@ -1,9 +1,11 @@
 div.audio-player {
+    display: flex;
     height: 48px;
     width: 100%;
     position: fixed;
     background-color: rgb(237, 237, 237);
     border-top: 1px solid rgb(194, 204, 214);
+    justify-content: center;
     bottom: 0;
 }
 
@@ -11,7 +13,7 @@ div.audio-player div.inner {
     display: flex;
     flex-direction: row;
     height: 100%;
-    width: 100%;
+    width: 1240px;
 }
 
 div.inner {
@@ -39,11 +41,10 @@ div.inner {
 .queue-controls {
     position: relative;
     top: 35%;
-    width: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 50px;
+    margin: 0 20px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
 }

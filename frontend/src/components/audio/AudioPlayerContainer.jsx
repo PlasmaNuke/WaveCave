@@ -1,6 +1,5 @@
 
 import './AudioPlayerContainer.css'
-import { tracks } from '../../data/tracks'
 import { useEffect, useRef, useState } from "react";
 import TrackDisplay from "./TrackDisplay";
 import AudioControls from './AudioControls';
@@ -21,13 +20,6 @@ export default function AudioPlayerContainer() {
     // const [timeProgress, setTimeProgress] = useState(0);
     // const [duration, setDuration] = useState(0);
 
-    const currentTrack = useSelector(state => {
-        if(state.audio.isShuffled) {
-            return state.tracks[state.audio.queue.shuffled[state.audio.currentIndex]]
-        }
-        return state.tracks[state.audio.queue.original[state.audio.currentIndex]]
-    })
-
     const audioRef = useRef();
     const progressBarRef = useRef();
 
@@ -39,16 +31,16 @@ export default function AudioPlayerContainer() {
 
     const handleNext = (e) => {
         e.preventDefault();
-        dispatch(audioPlayerActions.playNext())
-        dispatch(audioPlayerActions.playTrack())
+        dispatch(audioPlayerActions.playNext());
     }
 
     const handlePrev = (e) => {
         e.preventDefault();
-        if(audioRef.current.currentTime >= 3) {
-            dispatch(audioPlayerActions.playPrev())
+
+        if(audioRef.current.currentTime <= 3) {
+            dispatch(audioPlayerActions.playPrev());
         } else {
-            
+            audioRef.current.currentTime = 0
         }
     }
 

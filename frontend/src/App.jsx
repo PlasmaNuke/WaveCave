@@ -62,10 +62,10 @@ const trackLoader = async ({request, params}) => {
   throw { message: 'track not found' }
 }
 
-const loginLoader = async ({rrequest, params}) => {
+const loginLoader = async ({request, params}) => {
   const response = await fetch('/api/session');
 
-  return response.ok
+  return !!response.user
 }
 
 const router = createBrowserRouter([

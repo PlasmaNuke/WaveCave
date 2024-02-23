@@ -43,22 +43,24 @@ function ProfileButton({ user }) {
   
     return (
       <div className='profile-menu'>
-        <button onClick={toggleMenu}>
-          <i className="fa-solid fa-user-circle" />
-        </button>
+        <div className='nav-link profile'>
+          <button className="dropbtn" onClick={toggleMenu}>
+            <i className="fa-solid fa-user-circle" />
+          </button>
         {showMenu && (
+        <div className='profile-dropdown-container'>
           <ul className="profile-dropdown" ref={dropdownRef}>
-            <NavLink to={`/${user.username}`}>{user.username}</NavLink>
-            <li>{user.email}</li>
+            <NavLink className="nav-link profile" to={`/${user.username}`} replace={true}>{user.username}</NavLink>
             <li>
-              {/* <button onClick={handleUploadClick}>Upload Tracks</button> */}
-              <NavLink className="nav-button" to='/upload'>Upload Tracks</NavLink>
+              <NavLink className="nav-link upload" to='/upload'>Upload Tracks</NavLink>
             </li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
           </ul>
+        </div>
         )}
+        </div>
       </div>
     );
   }
